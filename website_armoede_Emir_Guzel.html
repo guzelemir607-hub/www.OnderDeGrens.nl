@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armoede — Emir Guzel</title>
+<style>
+:root{
+  --bg:#f6f7fb;
+  --text:#18202a;
+  --muted:#5d6875;
+  --card:#ffffff;
+  --accent:#2f5bea;
+  --accent2:#173b9c;
+  --border:#e5e8ef;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--border);
+  padding:14px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{font-weight:800;font-size:1.1rem}
+nav ul{display:flex;gap:22px;list-style:none;flex-wrap:wrap}
+nav a{color:var(--text);text-decoration:none;font-weight:600}
+nav a:hover{color:var(--accent)}
+.hero{
+  padding:90px 6% 75px;
+  background:linear-gradient(135deg,#eef2ff,#ffffff);
+}
+.hero-inner{max-width:1050px;margin:auto}
+.badge{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#e4eaff;
+  color:var(--accent2);
+  font-weight:700;
+  font-size:.9rem;
+  margin-bottom:18px;
+}
+h1{font-size:clamp(2.4rem,6vw,4.8rem);line-height:1.05;max-width:900px;margin-bottom:22px}
+.hero p{font-size:1.15rem;max-width:760px;color:var(--muted);margin-bottom:28px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-block;
+  text-decoration:none;
+  padding:13px 18px;
+  border-radius:10px;
+  background:var(--accent);
+  color:white;
+  font-weight:800;
+}
+.btn:hover{background:var(--accent2)}
+.btn.secondary{
+  background:white;
+  color:var(--accent2);
+  border:1px solid #cfd7ed;
+}
+section{padding:70px 6%}
+.container{max-width:1050px;margin:auto}
+h2{font-size:2rem;margin-bottom:14px}
+.lead{color:var(--muted);max-width:800px;margin-bottom:30px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 8px 25px rgba(20,30,50,.05);
+}
+.card h3{margin-bottom:9px}
+.card p{color:var(--muted)}
+.action{
+  background:#182b5c;
+  color:white;
+}
+.action p{color:#dce4ff}
+.action .btn{background:white;color:#182b5c}
+footer{
+  padding:30px 6%;
+  text-align:center;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  background:white;
+}
+@media(max-width:800px){
+  .grid{grid-template-columns:1fr}
+  nav{align-items:flex-start;gap:10px;flex-direction:column}
+  nav ul{gap:12px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Armoede in beeld</div>
+  <ul>
+    <li><a href="#wat">Wat is armoede?</a></li>
+    <li><a href="#oorzaken">Oorzaken</a></li>
+    <li><a href="#gevolgen">Gevolgen</a></li>
+    <li><a href="#oplossingen">Oplossingen</a></li>
+    <li><a href="#enquete">Enquête</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">Bewustwording &amp; informatie</span>
+    <h1>Armoede is meer dan te weinig geld.</h1>
+    <p>
+      Armoede kan invloed hebben op wonen, gezondheid, onderwijs, kansen en
+      sociale contacten. Op deze website lees je wat armoede betekent,
+      waardoor het ontstaat en wat we eraan kunnen doen.
+    </p>
+    <div class="buttons">
+      <a class="btn" href="#wat">Lees meer</a>
+      <a class="btn secondary" href="https://forms.gle/QWTtuhBzfXEQZc7a9" target="_blank" rel="noopener noreferrer">Vul de enquête in</a>
+    </div>
+  </div>
+</header>
+
+<section id="wat">
+  <div class="container">
+    <h2>Wat is armoede?</h2>
+    <p class="lead">
+      Armoede betekent dat iemand niet genoeg middelen heeft om op een
+      gezonde en volwaardige manier mee te doen in de samenleving.
+      Het gaat daarom niet alleen om inkomen, maar ook om kansen en zekerheid.
+    </p>
+    <div class="grid">
+      <div class="card">
+        <h3>Financiële druk</h3>
+        <p>Rekeningen, boodschappen en andere vaste lasten kunnen moeilijk te betalen zijn.</p>
+      </div>
+      <div class="card">
+        <h3>Minder kansen</h3>
+        <p>Geldgebrek kan toegang tot onderwijs, sport, cultuur en andere activiteiten beperken.</p>
+      </div>
+      <div class="card">
+        <h3>Onzekerheid</h3>
+        <p>Langdurige financiële zorgen kunnen stress en onzekerheid over de toekomst veroorzaken.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="oorzaken">
+  <div class="container">
+    <h2>Oorzaken van armoede</h2>
+    <p class="lead">Armoede heeft vaak meerdere oorzaken die elkaar kunnen versterken.</p>
+    <div class="grid">
+      <div class="card"><h3>Laag inkomen</h3><p>Een inkomen dat niet genoeg is voor alle noodzakelijke uitgaven kan snel tot problemen leiden.</p></div>
+      <div class="card"><h3>Werkloosheid</h3><p>Het verliezen van werk kan een grote verandering in iemands financiële situatie veroorzaken.</p></div>
+      <div class="card"><h3>Hoge kosten</h3><p>Huur, energie, zorg en dagelijkse boodschappen kunnen een groot deel van het inkomen innemen.</p></div>
+      <div class="card"><h3>Schulden</h3><p>Schulden en oplopende rente kunnen ervoor zorgen dat problemen steeds moeilijker op te lossen zijn.</p></div>
+      <div class="card"><h3>Onvoorziene gebeurtenissen</h3><p>Ziekte, een scheiding of andere ingrijpende gebeurtenissen kunnen financiële problemen veroorzaken.</p></div>
+      <div class="card"><h3>Ongelijke kansen</h3><p>Niet iedereen start met dezelfde mogelijkheden op het gebied van onderwijs, werk en inkomen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="gevolgen">
+  <div class="container">
+    <h2>Gevolgen</h2>
+    <p class="lead">Armoede kan gevolgen hebben die verder gaan dan de portemonnee.</p>
+    <div class="grid">
+      <div class="card"><h3>Gezondheid</h3><p>Financiële stress kan invloed hebben op zowel lichamelijk als mentaal welzijn.</p></div>
+      <div class="card"><h3>Onderwijs</h3><p>Kinderen kunnen minder mogelijkheden hebben om mee te doen aan activiteiten die hun ontwikkeling ondersteunen.</p></div>
+      <div class="card"><h3>Sociaal leven</h3><p>Geldgebrek kan ervoor zorgen dat mensen sociale activiteiten vermijden of zich buitengesloten voelen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="oplossingen">
+  <div class="container">
+    <h2>Wat kunnen we doen?</h2>
+    <p class="lead">Armoede aanpakken vraagt om samenwerking tussen mensen, organisaties en de overheid.</p>
+    <div class="grid">
+      <div class="card"><h3>Vroeg helpen</h3><p>Door financiële problemen vroeg te signaleren kan erger worden voorkomen.</p></div>
+      <div class="card"><h3>Kansen vergroten</h3><p>Goed onderwijs, werk en begeleiding kunnen mensen helpen om financieel zelfstandiger te worden.</p></div>
+      <div class="card"><h3>Samenwerken</h3><p>Gemeenten, hulporganisaties, scholen en inwoners kunnen samen zoeken naar passende oplossingen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="enquete" class="action">
+  <div class="container">
+    <h2>Help mee met mijn enquête</h2>
+    <p>
+      Ik wil graag weten hoe mensen denken over armoede. Met deze korte enquête
+      kun je jouw mening delen en bijdragen aan mijn onderzoek.
+    </p>
+    <br>
+    <a class="btn" href="https://forms.gle/QWTtuhBzfXEQZc7a9" target="_blank" rel="noopener noreferrer">Naar de enquête →</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Emir Guzel — Deze website is gemaakt voor educatieve doeleinden.
+</footer>
+
+</body>
+</html>
