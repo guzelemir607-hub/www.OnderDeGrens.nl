@@ -1,12 +1,115 @@
 <!doctype html>
 <html lang="nl">
-<head>
+<head> 
+<!-- Google Analytics wordt pas geladen na toestemming -->
+<script>
+function loadGoogleAnalytics() {
+  if (window.googleAnalyticsLoaded) return;
+  window.googleAnalyticsLoaded = true;
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-9Y14C71VVM';
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+
+  gtag('js', new Date());
+  gtag('config', 'G-9Y14C71VVM');
+}
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="OnderDeGrens maakt armoede bespreekbaar, helpt Rotterdammers betrouwbare informatie over ondersteuning te vinden en informeert jongeren.">
 <meta name="theme-color" content="#172554">
 <title>OnderDeGrens | Samen tegen armoede – Emir Guzel</title>
-<style>
+<style> 
+
+  /* Cookiemelding OnderDeGrens */
+.cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  max-width: 720px;
+  margin: auto;
+  background: #fff;
+  color: #172033;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 35px #17255430;
+  border: 1px solid #dce4f2;
+  z-index: 1000;
+}
+
+.cookie-banner h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.cookie-banner p {
+  color: #526078;
+  font-size: 14px;
+}
+
+.cookie-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.cookie-actions button {
+  padding: 11px 17px;
+  border-radius: 8px;
+  border: 1px solid #2458d3;
+  background: white;
+  color: #1e40af;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cookie-actions .accept {
+  background: #2458d3;
+  color: white;
+}
+
+.cookie-settings {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #dce4f2;
+}
+
+.cookie-settings label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.cookie-banner[hidden],
+.cookie-settings[hidden] {
+  display: none;
+}
+
+@media(max-width:500px) {
+  .cookie-banner {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 18px;
+  }
+
+  .cookie-actions {
+    flex-direction: column;
+  }
+
+  .cookie-actions button {
+    width: 100%;
+  }
+}
 :root{--navy:#172554;--blue:#2458d3;--blue2:#1e40af;--ink:#172033;--muted:#526078;--pale:#eef4ff;--paper:#f5f7fb;--white:#fff;--line:#dce4f2;--green:#147d54}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:95px}
@@ -180,5 +283,137 @@ footer a{color:#fff}
 <p>Een initiatief van Emir Guzel · © 2026</p>
 <p class="small" style="color:#cbd5e1">Informatie op deze website is bedoeld als algemene informatie. Controleer regelingen en voorwaarden altijd bij de betreffende organisatie.</p>
 </footer>
-</body>
+  
+<!-- Cookiemelding OnderDeGrens -->
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <h2>Jouw privacy is belangrijk</h2>
+
+  <p>
+    OnderDeGrens wil de website blijven verbeteren.
+    Met jouw toestemming gebruiken we Google Analytics
+    om inzicht te krijgen in het websitegebruik.
+    Je kunt zelf kiezen of je dit toestaat.
+  </p>
+
+  <div class="cookie-actions">
+    <button class="accept" id="acceptCookies">
+      Accepteren
+    </button>
+
+    <button id="rejectCookies">
+      Weigeren
+    </button>
+
+    <button id="showCookieSettings">
+      Instellingen
+    </button>
+  </div>
+
+  <div class="cookie-settings" id="cookieSettings" hidden>
+    <h3>Cookievoorkeuren</h3>
+
+    <label>
+      <input type="checkbox" checked disabled>
+      Noodzakelijke opslag van je cookievoorkeur
+    </label>
+
+    <label>
+      <input type="checkbox" id="analyticsChoice">
+      Analytische cookies (Google Analytics)
+    </label>
+
+    <div class="cookie-actions">
+      <button class="accept" id="saveCookieSettings">
+        Voorkeur opslaan
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Cookievoorkeuren opnieuw openen -->
+<p style="text-align:center; padding:10px;">
+  <button id="openCookieSettings"
+    style="background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer;">
+    Cookievoorkeuren wijzigen
+  </button>
+</p> 
+<script>
+(function () {
+  const banner = document.getElementById('cookieBanner');
+  const settings = document.getElementById('cookieSettings');
+  const analyticsChoice = document.getElementById('analyticsChoice');
+  const measurementId = 'G-9Y14C71VVM';
+
+  function getChoice() {
+    try {
+      return localStorage.getItem('onderdegrens-cookie-keuze');
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function disableGoogleAnalytics() {
+    window['ga-disable-' + measurementId] = true;
+
+    ['_ga', '_ga_' + measurementId.replace('G-', '')].forEach(function (name) {
+      document.cookie = name + '=; Max-Age=0; path=/; SameSite=Lax';
+    });
+  }
+
+  function saveChoice(choice) {
+    try {
+      localStorage.setItem('onderdegrens-cookie-keuze', choice);
+    } catch (e) {}
+
+    if (choice === 'accepted') {
+      window['ga-disable-' + measurementId] = false;
+      loadGoogleAnalytics();
+    } else {
+      disableGoogleAnalytics();
+    }
+
+    banner.hidden = true;
+    settings.hidden = true;
+  }
+
+  function openBanner(showSettings) {
+    banner.hidden = false;
+    settings.hidden = !showSettings;
+    analyticsChoice.checked = getChoice() === 'accepted';
+  }
+
+  const savedChoice = getChoice();
+
+  if (savedChoice === 'accepted') {
+    window['ga-disable-' + measurementId] = false;
+    loadGoogleAnalytics();
+  } else if (savedChoice === 'rejected') {
+    disableGoogleAnalytics();
+  } else {
+    openBanner(false);
+  }
+
+  document.getElementById('acceptCookies').addEventListener('click', function () {
+    saveChoice('accepted');
+  });
+
+  document.getElementById('rejectCookies').addEventListener('click', function () {
+    saveChoice('rejected');
+  });
+
+  document.getElementById('showCookieSettings').addEventListener('click', function () {
+    openBanner(true);
+  });
+
+  document.getElementById('openCookieSettings').addEventListener('click', function () {
+    openBanner(true);
+  });
+
+  document.getElementById('saveCookieSettings').addEventListener('click', function () {
+    saveChoice(analyticsChoice.checked ? 'accepted' : 'rejected');
+  });
+})();
+  
+</script>
+</body> 
 </html>
